@@ -1,8 +1,14 @@
 import math
 import requests
 import time
+from dotenv import load_dotenv
+#pip -m install python-dotenv
+import os
 
-API_KEY = "AIzaSyBGgnq8e3ow0DWvbwPHiaWN61Sy0AXnStg"
+# .env を読み込む
+load_dotenv()
+
+API_KEY = os.getenv("API_KEY")
 radius_km = 2
 lat_step_factor = 0.9
 pref_coords = {
