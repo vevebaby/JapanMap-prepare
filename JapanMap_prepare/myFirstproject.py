@@ -1,6 +1,12 @@
 import requests
+from dotenv import load_dotenv
+#pip -m install python-dotenv
+import os
 
-API_KEY = 'AIzaSyBGgnq8e3ow0DWvbwPHiaWN61Sy0AXnStg'
+# .env を読み込む
+load_dotenv()
+
+API_KEY = os.getenv("API_KEY")
 location = '35.681236,139.767125'  # 東京駅
 radius = 1000  # 半径1km
 keyword = '居酒屋'
