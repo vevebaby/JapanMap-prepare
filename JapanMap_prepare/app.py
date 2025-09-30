@@ -3,10 +3,12 @@ import pandas as pd
 from geopy.geocoders import Nominatim
 import folium
 from streamlit_folium import st_folium
+import os
 
-#データ読み込み
 def load_data():
-    df = pd.read_csv("非チェーン店リスト.csv")
+    base_path = os.path.dirname(__file__)  # app.py と同じ場所を基準に
+    file_path = os.path.join(base_path, "非チェーン店リスト.csv")
+    df = pd.read_csv(file_path)
     return df
 
 df = load_data()
