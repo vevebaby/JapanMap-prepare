@@ -5,5 +5,4 @@ beautifulsoup4
 geopy
 folium
 streamlit-folium
-OS
 tqdm==4.66.2
