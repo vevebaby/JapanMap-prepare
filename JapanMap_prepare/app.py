@@ -10,7 +10,10 @@ def load_data():
     base_path = os.path.dirname(__file__)  # ここで app.py の場所
     file_path = os.path.join(base_path, "非チェーン店リスト.csv")
     df = pd.read_csv(file_path)
-    return df
+    return pd.read_csv(file_path)
+
+# ✅ ここで必ず読み込む
+df = load_data()
 
 # サイト名（タイトル部分）
 st.markdown(
