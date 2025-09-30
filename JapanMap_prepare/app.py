@@ -1,3 +1,4 @@
+from geopy.exc import GeocoderUnavailable
 import streamlit as st
 import pandas as pd
 from geopy.geocoders import Nominatim
