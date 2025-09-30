@@ -6,4 +6,4 @@ geopy
 folium
 streamlit-folium
 OS
-tqdm
+tqdm==4.66.2
