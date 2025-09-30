@@ -2,12 +2,12 @@ import streamlit as st
 import pandas as pd
 from geopy.geocoders import Nominatim
 import folium
-import os
 from streamlit_folium import st_folium
+import os
 
 #データ読み込み
 def load_data():
-    base_path = os.path.dirname(__file__)  # ← ここで app.py の場所を基準にする
+    base_path = os.path.dirname(__file__)  # ここで app.py の場所
     file_path = os.path.join(base_path, "非チェーン店リスト.csv")
     df = pd.read_csv(file_path)
     return df
