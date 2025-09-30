@@ -2,14 +2,15 @@ import streamlit as st
 import pandas as pd
 from geopy.geocoders import Nominatim
 import folium
+import os
 from streamlit_folium import st_folium
 
 #データ読み込み
 def load_data():
-    df = pd.read_csv("非チェーン店リスト.csv")
+    base_path = os.path.dirname(__file__)  # ← ここで app.py の場所を基準にする
+    file_path = os.path.join(base_path, "非チェーン店リスト.csv")
+    df = pd.read_csv(file_path)
     return df
-
-df = load_data()
 
 # サイト名（タイトル部分）
 st.markdown(
