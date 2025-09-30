@@ -3,12 +3,10 @@ import pandas as pd
 from geopy.geocoders import Nominatim
 import folium
 from streamlit_folium import st_folium
-import os
 
+#データ読み込み
 def load_data():
-    base_path = os.path.dirname(__file__)  # app.py と同じ場所を基準に
-    file_path = os.path.join(base_path, "非チェーン店リスト.csv")
-    df = pd.read_csv(file_path)
+    df = pd.read_csv("非チェーン店リスト.csv")
     return df
 
 df = load_data()
@@ -144,20 +142,25 @@ if len(filtered_df) > 0:
 
     st.write(f"地図表示: {selected_row['name']} ({address})")
 
-    # ジオコーディング
-    geolocator = Nominatim(user_agent="non_chain_locator")
-    location = None
+   # ジオコーディング
+geolocator = Nominatim(user_agent="non_chain_locator")
+location = None
+
+try:
     if address and str(address) != "nan":
         simple_address = address.split("丁目")[0]  # 「丁目」以降を削除
         location = geolocator.geocode(simple_address + ", Japan")
-
-        # location = geolocator.geocode(str(address) + ", Japan")
 
     if location:
         lat, lng = location.latitude, location.longitude
     else:
         st.warning("この住所から座標を取得できませんでした。代わりに東京駅を表示します。")
         lat, lng = 35.681236, 139.767125  # 東京駅
+
+except GeocoderUnavailable:
+    st.error("ジオコーディングサービスに接続できませんでした。後でもう一度試してください。")
+    # フォールバックとして東京駅
+    lat, lng = 35.681236, 139.767125
 
     # 地図を作成
     m = folium.Map(location=[lat, lng], zoom_start=14)
