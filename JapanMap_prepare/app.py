@@ -167,12 +167,12 @@ except GeocoderUnavailable:
     # フォールバックとして東京駅
     lat, lng = 35.681236, 139.767125
 
-    # 地図を作成
-    m = folium.Map(location=[lat, lng], zoom_start=14)
-    folium.Marker([lat, lng], popup=selected_row["name"]).add_to(m)
+# 地図を作成
+m = folium.Map(location=[lat, lng], zoom_start=14)
+folium.Marker([lat, lng], popup=selected_row["name"]).add_to(m)
 
-    # Streamlit で表示
-    st_folium(m, width=700, height=500)
+# Streamlit で表示
+st_folium(m, width=700, height=500)
 
 #DataFrame 表示（検索結果)
 #st.write(f"検索結果: {len(filtered_df)} 件")
