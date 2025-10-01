@@ -148,8 +148,8 @@ if len(filtered_df) > 0:
     st.write(f"地図表示: {selected_row['name']} ({address})")
 
    # ジオコーディング
-geolocator = Nominatim(user_agent="non_chain_locator")
-location = None
+    geolocator = Nominatim(user_agent="non_chain_locator")
+    location = None
 
 try:
     if address and str(address) != "nan":
